@@ -1,0 +1,23 @@
+{
+    "name": "ava007/cakephp3-translation-plugin",
+    "description": "Translation plugin for CakePHP",
+    "type": "cakephp-plugin",
+    "require": {
+        "php": ">=5.4.16",
+        "cakephp/cakephp": "~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cakephp3-translation-plugin\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "cakephp3-translation-plugin\\Test\\": "tests",
+            "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+        }
+    }
+}
