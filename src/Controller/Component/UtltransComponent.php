@@ -155,7 +155,7 @@ class UtltransComponent extends Component
       // Google requires attribution for their Language API, please see: http://code.google.com/apis/ajaxlanguage/documentation/#Branding
       $wnk_translation = Configure::read('WnkTranslation');
       
-      if (empty($wnk_translation['google_key'])) return 'google_key is not defined in bootstrap.php'
+      if (empty($wnk_translation['google_key'])) return 'google_key is not defined in bootstrap.php';
 
       $url = 'https://www.googleapis.com/language/translate/v2?key=' . $wnk_translation['google_key'];
       $url .= '&q=' . rawurlencode($text).'&source='. $from.'&target='.$to;
