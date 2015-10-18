@@ -25,8 +25,12 @@ Configure::write('WnkTranslation', [
     'trans_lang' => ['de','fr','it'],   // Languages in which the application should be translated to
 ]);
 
+###Database
 
-##URL
+run the appropriate sql-ddl-script:
+- postgresql:   ddl-postgresql.sql
+
+###URL
 
 After installation the plugins is called used the following url:
 
