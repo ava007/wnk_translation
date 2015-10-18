@@ -3,9 +3,9 @@
       <ul class="nav nav-pills">
          <li><?= $this->Html->link('Step 1: ' . __('Import'), ['action' => 'import'],['title' => 'Import from pot File']) ?></li>
          <li><?= $this->Html->link('Step 2: ' . __('Prepare'), ['action' => 'prepare'],['title' => 'Prepare translation, please execute after each import (Step 1)']) ?></li>
-         <li><?= $this->Html->link('Step 3a: ' . __('Google Translate'), ['action' => 'import']) ?></li>
-         <li><?= $this->Html->link('Step 3b: ' . __('Manual Translate'), ['action' => 'import']) ?></li>
-         <li><?= $this->Html->link('Step 4: ' . __('Export'), ['action' => 'export']) ?></li>
+         <li><?= $this->Html->link('Step 3a: ' . __('Google Translate'), ['action' => 'index'],['title' => 'Not implemented yet']) ?></li>
+         <li><?= $this->Html->link('Step 3b: ' . __('Manual Translate'), ['action' => 'index'],['title' => 'Edit each language item in the list below']) ?></li>
+         <li><?= $this->Html->link('Step 4: ' . __('Export'), ['action' => 'export'],['title' => 'Export translations to pot-Files']) ?></li>
       </ul>
    </div>
 </div>
