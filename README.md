@@ -1,5 +1,5 @@
  
-# wnk_translation: Translation Plugin for CakePHP 3
+#Translation Plugin for CakePHP 3
 
 It provides translation services for pot files:
 
