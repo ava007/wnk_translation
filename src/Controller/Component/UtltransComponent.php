@@ -49,7 +49,7 @@ class UtltransComponent extends Component
                    // prepare data for saving
                    $tl->id = Text::uuid();
                    $tl->msgid = $msgid;
-                   $tl->msgstr = $msgstr;
+                   $tl->msgstr = $msgid;
                    $tl->locale = $wnk_translation['default_lang'];
                    $tl->status = 'Original';
                    $translationsTable->save($tl);
