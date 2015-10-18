@@ -111,8 +111,7 @@ class UtltransComponent extends Component
              endforeach;
         endforeach;
 
-        $this->Flash->success('Translate successful: ' . $z);
-        $this->redirect('/translations');
+        return 'Translation preparation successfully ended. Records generated: ' . $z;
     }
 
     function export() {
