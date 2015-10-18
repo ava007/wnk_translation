@@ -1,5 +1,5 @@
 {
-    "name": "ava007/wnktranslation",
+    "name": "ava007/wnk_translation",
     "description": "Translation plugin for CakePHP",
     "type": "cakephp-plugin",
     "require": {
@@ -11,12 +11,12 @@
     },
     "autoload": {
         "psr-4": {
-            "wnktranslation\\": "src"
+            "WnkTranslation\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "wnktranslation\\Test\\": "tests",
+            "WnkTranslation\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
         }
     }
