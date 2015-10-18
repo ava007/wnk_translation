@@ -146,6 +146,32 @@ class UtltransComponent extends Component
             rename ($path.DS.$filename,$path.DS.'default.pot');
         endforeach;
         return 'Export successful';
-}
+   }
+   
+  
+
+   function google_translate($text, $from = '', $to = 'en') {
+
+      // Google requires attribution for their Language API, please see: http://code.google.com/apis/ajaxlanguage/documentation/#Branding
+      $wnk_translation = Configure::read('WnkTranslation');
+      
+      if (empty($wnk_translation['google_key'])) return 'google_key is not defined in bootstrap.php'
+
+      $url = 'https://www.googleapis.com/language/translate/v2?key=' . $wnk_translation['google_key'];
+      $url .= '&q=' . rawurlencode($text).'&source='. $from.'&target='.$to;
+
+      $response = file_get_contents(
+               $url,
+               null,
+               stream_context_create(
+                  array('http'=>array('method'=>"GET",'header'=>"Referer: http://".$_SERVER['HTTP_HOST']."/\r\n"))
+               )
+            );
+
+       $ra = json_decode($response, true);
+       $this->log('CompAxtranslate: response from google:' . $ra['data']['translations'][0]['translatedText']);
+               
+       return $ra['data']['translations'][0]['translatedText'];
+   } 
 
 }
