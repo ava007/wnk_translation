@@ -169,7 +169,7 @@ class UtltransComponent extends Component
             );
 
        $ra = json_decode($response, true);
-       $this->log('CompAxtranslate: response from google:' . $ra['data']['translations'][0]['translatedText']);
+       $this->log('Component google_translate: response from google:' . $ra['data']['translations'][0]['translatedText']);
                
        return $ra['data']['translations'][0]['translatedText'];
    } 
