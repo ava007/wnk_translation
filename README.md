@@ -1,5 +1,5 @@
-# cakephp3-translation-plugin
-Translation Plugin for CakePHP 3
+ 
+# wnk_translation: Translation Plugin for CakePHP 3
 
 It provides translation services for pot files:
 
@@ -14,14 +14,19 @@ It provides translation services for pot files:
 
 ##Installation
 
-composer require ava007/cakephp3-translation-plugin
+composer require ava007/wnk_translation
 
-### Config/bootstrap.php
+###Config/bootstrap.php
 
-Plugin::load('cakephp3-translation-plugin', ['routes' => true, 'autoload' => true]);
+Plugin::load('WnkTranslation', ['routes' => true, 'autoload' => true, 'bootstrap' => false]);
 
+##URL
+
+After installation the plugins is called used the following url:
+
+http://....domainname/wnk_translation/translations/index
 
 
 ## References
 
-visit http://41share.com to see this plugin in action
+visit http://41share.com/wnk_translation/translation/index to see this plugin in action
