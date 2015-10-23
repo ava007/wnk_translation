@@ -141,9 +141,9 @@ class UtltransComponent extends Component
             endforeach;
             $file->close();
 
-            if (file_exists($path.DS.'default.pot')) 
-               unlink ($path.DS.'default.pot');
-            rename ($path.DS.$filename,$path.DS.'default.pot');
+            if (file_exists($path.DS.'default.po')) 
+               unlink ($path.DS.'default.po');
+            rename ($path.DS.$filename,$path.DS.'default.po');
         endforeach;
         return 'Export successful';
    }
