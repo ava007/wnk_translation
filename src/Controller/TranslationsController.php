@@ -3,6 +3,8 @@ namespace WnkTranslation\Controller;
 
 use WnkTranslation\Controller\AppController;
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
+use Cake\Utility\Text;
 
 /**
  * Translations Controller
