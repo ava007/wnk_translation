@@ -154,5 +154,21 @@ class TranslationsController extends AppController
     public function about() 
     {
     }
+    
+    public function googletranslate() {
+        $this->set('WnkTranslation', Configure::read('WnkTranslation'));
+
+        $conn = ConnectionManager::get('default');
+        $q = "select locale, count(*) from wnk_translation where status = 'NotTranslated' group by locale having count(*) > 0";
+        $tset = $conn->execute($q)->fetchAll('assoc');
+        $this->set('lang', $tset);   
+        
+        if ($this->request->is('post')) {
+            $this->log('Ctranslations:googletranslate: ' . print_r($this->request['data'],true));
+            $this->Flash->success(__('The translation has been saved.'));
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+
 
 }
