@@ -91,7 +91,7 @@ class UtltransComponent extends Component
             if ($k == $wnk_translation['default_lang']) continue;
 
             $q = "select * from wnk_translation where locale = '" . $wnk_translation['default_lang'] . "' and msgid not in (";
-            $q .= " select msgid from wnk_translation where locale='". $k . "') limit 5";
+            $q .= " select msgid from wnk_translation where locale='". $k . "') limit 25";
 
             $results = $connection->execute($q)->fetchAll('assoc');
 
