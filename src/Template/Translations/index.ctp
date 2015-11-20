@@ -10,7 +10,11 @@
             echo $this->Form->create('WnkTranslation.Translation',['class' => 'form-inline','type' => 'post']);
             echo '<th>' .$this->Form->input('msgstr', ['label' => false]) . '</th>';
             echo '<th>' .$this->Form->input('locale', ['label' => false]). '</th>';
-            echo '<th>' .$this->Form->input('status', ['label' => false]). '</th>';
+            echo '<th>' .$this->Form->input('status', ['label' => false,'type' => 'select',
+                         'multiple' => false, 
+                         'options' => array('Original' => 'Original','NotTranslated' => 'NotTranslated','TranslatedByUser' => 'TranslatedByUser'), 
+                         'empty' => true
+                         ]). '</th>';
             echo'<th>' . $this->Form->button(__('Filter')) . '</th>';
             echo $this->Form->end();
         ?>
