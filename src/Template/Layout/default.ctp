@@ -16,7 +16,7 @@ echo '">';
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 <title>CakePHP 3 Translation Plugin</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -35,8 +35,6 @@ echo '">';
 <ul class="nav navbar-nav">
 <li class="active"><a href="/"><?= env('HTTP_HOST') ?></a></li>
 <li><a href="#about">About</a></li>
-</ul>
-</li>
 </ul>
 </div><!-- /.navbar-collapse -->
 </div><!-- /.container -->
