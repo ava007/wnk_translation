@@ -133,11 +133,13 @@ class UtltransComponent extends Component
             $file = $path.DS.$filename;
             $file = new File($file, true, 0644);
 
+            $z = 0;
             $data = TableRegistry::get('WnkTranslation.Translations')->find('all')->where(["locale" => $k])->all();
 
             foreach ($data as $rec):
                    $file->write('msgid "' .$rec->msgid .'"'."\n");
                    $file->write('msgstr "'.$rec->msgstr.'"'."\n");
+                   $z++;
             endforeach;
             $file->close();
 
@@ -145,7 +147,7 @@ class UtltransComponent extends Component
                unlink ($path.DS.'default.po');
             rename ($path.DS.$filename,$path.DS.'default.po');
         endforeach;
-        return 'Export successful';
+        return 'Export successful with ' . $z . ' Records';
    }
    
   
