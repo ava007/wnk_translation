@@ -15,6 +15,10 @@ use Cake\Filesystem\File;
 class UtltransComponent extends Component
 {
 
+   /* 
+   Step 1: the function "import" reads the pot file (default.pot) and stores the values into a database table 
+   */
+
    function import($filename = '') {
 
       $wnk_translation = Configure::read('WnkTranslation');
@@ -70,6 +74,10 @@ class UtltransComponent extends Component
  //     $connection->update('WnkTranslation.Translations', ['last_used' => Time::now()], ['id' => $id]);
    }
 
+   /*
+      Step 2: After execution of function "import" new translation last records will be generated for strings 
+      that need translation
+   */
 
     function prepare() {
         $z=0;
@@ -116,7 +124,7 @@ class UtltransComponent extends Component
 
     function export() {
 
-        // Step 3: export default.pot file to the relevant directory
+        // Step 4: export default.pot file to the relevant directory
 
         $wnk_translation = Configure::read('WnkTranslation');
 
@@ -150,9 +158,12 @@ class UtltransComponent extends Component
         return 'Export successful with ' . $z . ' Records';
    }
    
-  
+  /*
+  Step 3: Automated translation of records that are not translated
+   */
 
    function google_translate($text, $from = '', $to = 'en') {
+      
 
       // Google requires attribution for their Language API, please see: http://code.google.com/apis/ajaxlanguage/documentation/#Branding
       $wnk_translation = Configure::read('WnkTranslation');
