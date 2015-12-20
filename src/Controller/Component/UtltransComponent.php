@@ -118,6 +118,9 @@ class UtltransComponent extends Component
                  }
              endforeach;
         endforeach;
+        
+        // delete unused strings
+        //delete  from wnk_translation where last_used < current_timestamp - interval '5 days' and locale = 'en';
 
         return 'Translation preparation successfully ended. Records generated: ' . $z;
     }
