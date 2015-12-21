@@ -121,6 +121,7 @@ class UtltransComponent extends Component
         
         // delete unused strings
         //delete  from wnk_translation where last_used < current_timestamp - interval '5 days' and locale = 'en';
+        // delete from wnk_translation where locale <> 'en' and msgid not in (select msgid from wnk_translation where locale = 'en');
 
         return 'Translation preparation successfully ended. Records generated: ' . $z;
     }
