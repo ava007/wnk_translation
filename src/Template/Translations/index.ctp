@@ -9,7 +9,15 @@
         <?php
             echo $this->Form->create('WnkTranslation.Translation',['class' => 'form-inline','type' => 'post']);
             echo '<th>' .$this->Form->input('msgstr', ['label' => false]) . '</th>';
-            echo '<th>' .$this->Form->input('locale', ['label' => false]). '</th>';
+            echo '<th>' .$this->Form->input('locale', ['label' => false,
+                                                       'type' => 'select',
+                                                       'multiple' => false,
+                                                       'empty' => true,
+                                                       'options' => array_merge(
+                                                         array($WnkTranslation['default_lang'] => $WnkTranslation['default_lang']),
+                                                            $WnkTranslation['trans_lang']
+                                                        ) 
+                                                      ]). '</th>';
             echo '<th>' .$this->Form->input('status', ['label' => false,'type' => 'select',
                          'multiple' => false, 
                          'options' => array('Original' => 'Original','NotTranslated' => 'NotTranslated','TranslatedByUser' => 'TranslatedByUser'), 
