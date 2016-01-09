@@ -33,7 +33,7 @@
          <div class="form-group">
             <label class="control-label col-md-2">MsgStr</label>
             <div class="col-md-3"><text<?= 'area'?> name="msgstr" id="msgstr" rows="4" cols="72">
-               <?= $this->viewVars['translation']->msgstr ?></text<?= 'area'?>></div>
+               <?= trim($this->viewVars['translation']->msgstr) ?></text<?= 'area'?>></div>
          </div>
    
 
