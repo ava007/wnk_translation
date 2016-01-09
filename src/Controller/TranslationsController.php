@@ -32,14 +32,18 @@ class TranslationsController extends AppController
         $where = array();
         if (!empty($this->request['data']['locale']))
             $where['locale'] = $this->request['data']['locale'];
+        if (!empty($this->request->query['locale']))
+            $where['locale'] = $this->request->query['locale'];
 
         if (!empty($this->request['data']['msgstr']))
             $where['msgstr like'] = '%' . $this->request['data']['msgstr'] . '%';
 
         if (!empty($this->request['data']['status']))
             $where['status'] = $this->request['data']['status'];
+        if (!empty($this->request->query['status']))
+            $where['status'] = $this->request->query['status'];
 
-        $query = $this->Translations->find('all')->where($where);
+        $query = $this->Translations->find()->where($where);
 
         $this->set('translations', $this->paginate($query));
         $this->set('_serialize', ['translations']);
