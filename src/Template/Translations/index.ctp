@@ -7,7 +7,7 @@
         <thead>
         <tr>
         <?php
-            echo $this->Form->create('WnkTranslation.Translation',['class' => 'form-inline','type' => 'post']);
+            echo $this->Form->create('WnkTranslation.Translation',['class' => 'form-inline','type' => 'GET']);
             echo '<th>' .$this->Form->input('msgstr', ['label' => false]) . '</th>';
             echo '<th>' .$this->Form->input('locale', ['label' => false,
                                                        'type' => 'select',
