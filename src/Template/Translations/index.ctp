@@ -15,7 +15,7 @@
                                                        'empty' => true,
                                                        'options' => array_merge(
                                                          array($WnkTranslation['default_lang'] => $WnkTranslation['default_lang']),
-                                                            $WnkTranslation['trans_lang']
+                                                         array_combine($WnkTranslation['trans_lang'],$WnkTranslation['trans_lang'])
                                                         ) 
                                                       ]). '</th>';
             echo '<th>' .$this->Form->input('status', ['label' => false,'type' => 'select',
