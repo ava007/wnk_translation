@@ -1,11 +1,17 @@
-<div class="col-md-8 col-xs-12">
-
 <table class="table">
 <?php
-if (isset($original) {
-  echo '<tr><td>' . $original['locale'] . '</td><td>' . $original['status'] . '</td><td>' . $original['count'] . '</td></tr>';
+if (isset($original)) {
+  echo '<tr><td>' . $original[0]['locale'] . '</td><td>' . $original[0]['status'] . '</td><td>' . $original[0]['count'] . '</td></tr>';
+}
+
+if (isset($tsets)) {
+  foreach ($tsets as $t) {
+      echo '<tr><td>' . $t['locale'] . '</td><td>' . $t['status'] . '</td><td>' . $t['count'] . '</td></tr>';
+  }
+}
+
 ?>
 </table>
 </div>
-<?php echo print_r($orginal,true); ?>
-<?php echo print_r($tset,true); ?>
+<?php echo print_r($original,true); ?>
+<?php echo print_r($t,true); ?>
