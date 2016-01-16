@@ -53,6 +53,33 @@ class TranslationsController extends AppController
     }
 
     /**
+     * Cockpit method
+     *
+     * @param 
+     * @return void
+     * @throws 
+     */
+    public function cockpit() 
+    {
+        $this->set('WnkTranslation', Configure::read('WnkTranslation'));
+
+        $conn = ConnectionManager::get('default');
+        
+        $q = "select locale,status,count(*) as cnt from wnk_translation ";
+        $q.= "where locale in (select distinct locale where status ='Original') ";
+        $q.= "group by locale,status order by 1,2 ";
+        $tset = $conn->execute($q)->fetchAll('assoc');
+        $this->set('original', $tset);   
+        
+        $q = "select locale,status,count(*) as cnt from wnk_translation ";
+        $q.= "where locale NOT in (select distinct locale where status ='Original') ";
+        $q.= "group by locale,status order by 1,2 ";
+        $tset = $conn->execute($q)->fetchAll('assoc');
+        $this->set('tsets', $tset);   
+    }
+
+
+    /**
      * View method
      *
      * @param string|null $id Translation id.
