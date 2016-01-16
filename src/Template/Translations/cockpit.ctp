@@ -13,5 +13,3 @@ if (isset($tsets)) {
 ?>
 </table>
 </div>
-<?php echo print_r($original,true); ?>
-<?php echo print_r($t,true); ?>
