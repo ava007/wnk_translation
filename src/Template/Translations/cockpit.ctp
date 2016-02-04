@@ -17,20 +17,20 @@ foreach ($WnkTranslation['trans_lang'] as $lng) {
 
    $key = array_filter($lng_arr, function ($k )  { return  $k['status'] =='NotTranslated'; }, ARRAY_FILTER_USE_BOTH);
    $k = array_column($key,'cnt');
-   echo $k[0];
+   echo '<a href="/wnk_translation/translations/index?locale=' . $lng . '&status=NotTranslated">' . $k[0] . '</a>';
 
    echo '</td><td>';
 
    $key = array_filter($lng_arr, function ($k )  { return  $k['status'] =='TranslatedByUser'; }, ARRAY_FILTER_USE_BOTH);
    $k = array_column($key,'cnt');
-   echo $k[0];
-
+   echo '<a href="/wnk_translation/translations/index?locale=' . $lng . '&status=TranslatedByUser">' . $k[0] . '</a>';
+   
    echo '</td><td>';
 
    $key = array_filter($lng_arr, function ($k )  { return  $k['status'] =='TranslatedByMachine'; }, ARRAY_FILTER_USE_BOTH);
    $k = array_column($key,'cnt');
-   echo $k[0];
- 
+   echo '<a href="/wnk_translation/translations/index?locale=' . $lng . '&status=TranslatedByMachine">' . $k[0] . '</a>';
+   
    echo '</td></tr>';
 }
 ?>
