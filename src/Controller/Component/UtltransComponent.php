@@ -133,6 +133,8 @@ class UtltransComponent extends Component
         $wnk_translation = Configure::read('WnkTranslation');
 
         $filename= 'f' . gmdate('YmdHis');
+        
+        // iterate through all configured languages:
         foreach ($wnk_translation['trans_lang'] as $k):
             if ($k == $wnk_translation['default_lang']) continue;
 
@@ -149,9 +151,14 @@ class UtltransComponent extends Component
             $data = TableRegistry::get('WnkTranslation.Translations')->find('all')->where(["locale" => $k])->all();
 
             foreach ($data as $rec):
-                   $file->write('msgid "' .$rec->msgid .'"'."\n");
-                   $file->write('msgstr "'.$rec->msgstr.'"'."\n");
-                   $z++;
+                  if ($rec->status == 'Original' or
+                      $rec->status == 'TranslatedByUser' or
+                      $rec->status == 'TranslatedByMachine') 
+                  {
+                        $file->write('msgid "' .$rec->msgid .'"'."\n");
+                        $file->write('msgstr "'.$rec->msgstr.'"'."\n");
+                        $z++;
+                  }
             endforeach;
             $file->close();
 
