@@ -71,7 +71,9 @@ class UtltransComponent extends Component
 
    function setLastUsed($id) {
         $connection = ConnectionManager::get('default');
- //     $connection->update('WnkTranslation.Translations', ['last_used' => Time::now()], ['id' => $id]);
+ //     $connection->update('Wnk_translation', ['last_used' => Time::now()], ['id' => $id]);
+        $connection->update('wnk_translation', ['last_used = ' => 'now()'], ['id' => $id]);
+
    }
 
    /*
