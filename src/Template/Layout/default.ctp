@@ -14,6 +14,7 @@ echo '">';
 ?>
 <meta name="author" content="">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="robots" content="noindex, nofollow" />
 
 <title>CakePHP 3 Translation Plugin</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
