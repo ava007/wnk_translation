@@ -52,7 +52,7 @@ echo '">';
 
 <footer><div class="container">
 <div class="row"><div class="col-md-12 col-lg-12">
-<p>©Copyright 2015 - wanaka GmbH. All rights reserved.</p>
+<p>©Copyright 2016 - wanaka GmbH. All rights reserved.</p>
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
