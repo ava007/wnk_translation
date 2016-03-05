@@ -45,7 +45,7 @@
       
       <a href="https://translate.google.com/#en/<?= $this->viewVars['translation']->locale ?>/<?= $this->viewVars['translation']->msgid ?> " rel="nofollow" target="_blank" class="btn">Google Translate</a>
       
-      <a href="http://www.bing.com/translator/?ref=TThis&text=<?= $this->viewVars['translation']->msgid ?>&from=en&to=<?= $this->viewVars['translation']->locale ?>" rel="nofollow" target="_blank" clas="btn">Bing Translate</a>
+      <a href="http://www.bing.com/translator/?ref=TThis&text=<?= $this->viewVars['translation']->msgid ?>&from=en&to=<?= $this->viewVars['translation']->locale ?>" rel="nofollow" target="_blank" class="btn">Bing Translate</a>
 
       <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $translation->id],
                 ['confirm' => __('Are you sure you want to delete # {0}?', $translation->id), 'class' => 'btn btn-danger']
