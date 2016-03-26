@@ -9,3 +9,13 @@ CREATE TABLE wnk_translation (
     CONSTRAINT status CHECK ( status IN ( 'Original', 'TranslatedByUser', 'TranslatedByMachine','NotTranslated') )   
 ) with (oids = false);
 
+CREATE TABLE wnk_translation_proposed (
+    id character(36) primary key,
+    msgid character varying(255) NOT NULL,
+    locale character(2) DEFAULT 'en'::bpchar,
+    status character varying(24) default 'ProposedByUser',
+    created timestamp with time zone,
+    createdbyip character varying(41),
+    msgstr text
+    CONSTRAINT status CHECK ( status IN ( 'ProposedByUser', 'AcceptedByAdmin') )   
+) with (oids = false);
