@@ -1,7 +1,7 @@
 <?php
-namespace WnkTranslation\Controller;
+namespace WnkProposedtranslation\Controller;
 
-use WnkProposedtranslation\Controller\AppController;
+use WnkTranslation\Controller\AppController;
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Utility\Text;
@@ -25,10 +25,16 @@ class ProposedtranslationsController extends AppController
      *
      * @return void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($id = null)
     {
-        $translation = $this->Proposedtranslations->newEntity();
+        $translation = $this->Translations->get($id, [
+            'contain' => []
+        ]);
+        $this->set('translation', $translation);
+        $this->set('_serialize', ['translation']);
+     
         if ($this->request->is('post')) {
+            $translation = $this->Proposedtranslations->newEntity();
             $translation = $this->Proposedtranslations->patchEntity($translation, $this->request->data);
             if ($this->Proposedtranslations->save($translation)) {
                 $this->Flash->success(__('The translation has been saved.'));
