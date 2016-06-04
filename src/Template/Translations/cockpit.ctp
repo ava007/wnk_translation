@@ -1,7 +1,7 @@
 <table class="table">
 
 <thead>
-<tr><th>Language</th><th>Not Translated</th><th>Translated by User</th><th>Translated by Google</th></tr>
+<tr><th>Language</th><th>Not Translated</th><th>Translated by User</th><th>Machine Translated</th></tr>
 </thead>
 
 <?php
@@ -29,6 +29,8 @@ foreach ($WnkTranslation['trans_lang'] as $lng) {
 
    $key = array_filter($lng_arr, function ($k )  { return  $k['status'] =='TranslatedByMachine'; }, ARRAY_FILTER_USE_BOTH);
    $k = array_column($key,'cnt');
+   if (empty($k[0]))
+      $k[0] = 0;
    echo '<a href="/wnk_translation/translations/index?locale=' . $lng . '&status=TranslatedByMachine">' . $k[0] . '</a>';
    
    echo '</td></tr>';
