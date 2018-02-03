@@ -17,7 +17,7 @@ echo '">';
 <meta name="robots" content="noindex, nofollow" />
 
 <title>CakePHP 3 Translation Plugin</title>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -52,7 +52,7 @@ echo '">';
 
 <footer><div class="container">
 <div class="row"><div class="col-md-12 col-lg-12">
-<p>©Copyright 2016 - wanaka GmbH. All rights reserved.</p>
+<p>©Copyright 2018 - wanaka GmbH. All rights reserved.</p>
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
