@@ -1,5 +1,5 @@
  
-#Translation Plugin for CakePHP 3
+# Translation Plugin for CakePHP 3
 
 It provides translation services for pot files:
 
@@ -12,25 +12,26 @@ It provides translation services for pot files:
  
 
 
-##Installation
-
+## Installation
+``` shell
 composer require ava007/wnk_translation
+```
 
-###Config/bootstrap.php
-
+### Config/bootstrap.ph
+```
 Plugin::load('WnkTranslation', ['routes' => true, 'autoload' => true, 'bootstrap' => false]);
 
 Configure::write('WnkTranslation', [
     'default_lang' => 'en',    // Language in which the application has been developed
     'trans_lang' => ['de','fr','it'],   // Languages in which the application should be translated to
 ]);
-
-###Database
+```
+### Database
 
 run the appropriate sql-ddl-script:
 - postgresql:   ddl-postgresql.sql
 
-###URL
+### URL
 
 After installation the plugins is called used the following url:
 
