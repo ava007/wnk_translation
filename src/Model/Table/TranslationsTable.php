@@ -6,6 +6,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use WnkTranslation\Model\Entity\Translation;
+use Cake\Core\Configure;
 
 /**
  * Translations Model
