@@ -24,6 +24,7 @@ Plugin::load('WnkTranslation', ['routes' => true, 'autoload' => true, 'bootstrap
 Configure::write('WnkTranslation', [
     'default_lang' => 'en',    // Language in which the application has been developed
     'trans_lang' => ['de','fr','it'],   // Languages in which the application should be translated to
+    'tablePrefix' => '',     // optional prefix for database tables
 ]);
 ```
 ### Database
