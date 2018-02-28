@@ -25,7 +25,7 @@ class TranslationsTable extends Table
         parent::initialize($config);
         
         $wnkConf = Configure::read('WnkTranslation');
-        if (isset($wnkConf['tablePrefix'])
+        if (isset($wnkConf['tablePrefix']))
             $table = $wnkConf['tablePrefix'] . 'wnk_translation';
         else
             $table = 'wnk_translation';
