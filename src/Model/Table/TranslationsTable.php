@@ -23,7 +23,14 @@ class TranslationsTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-        $this->table('wnk_translation');
+        
+        $wnkConf = Configure::read('WnkTranslation');
+        if (isset($wnkConf['tablePrefix'])
+            $table = $wnkConf['tablePrefix'] . 'wnk_translation';
+        else
+            $table = 'wnk_translation';
+            
+        $this->table($table);
         $this->displayField('msgid');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
