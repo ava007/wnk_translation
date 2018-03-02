@@ -61,17 +61,23 @@ class TranslationsController extends AppController
      */
     public function cockpit() 
     {
-        $this->set('WnkTranslation', Configure::read('WnkTranslation'));
+        
+        $wnkConf = Configure::read('WnkTranslation');
+        $this->set('WnkTranslation', $wnkConf);
 
         $conn = ConnectionManager::get('default');
         
-        $q = "select locale,status,count(*) as cnt from wnk_translation ";
+        $table = 'wnk_translation';
+        if (isset($wnkConf['tablePrefix']))
+            $table = $wnkConf['tablePrefix'] . $table;
+        
+        $q = "select locale,status,count(*) as cnt from " . $table;
         $q.= "where locale in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('original', $tset);   
         
-        $q = "select locale,status,count(*) as cnt from wnk_translation ";
+        $q = "select locale,status,count(*) as cnt from " . $table;
         $q.= "where locale NOT in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
@@ -191,10 +197,15 @@ class TranslationsController extends AppController
     }
     
     public function googletranslate() {
-        $this->set('WnkTranslation', Configure::read('WnkTranslation'));
+        $wnkConf = Configure::read('WnkTranslation');
+        $this->set('WnkTranslation', $wnkConf);
+        
+        $table = 'wnk_translation';
+        if (isset($wnkConf['tablePrefix']))
+            $table = $wnkConf['tablePrefix'] . $table;
 
         $conn = ConnectionManager::get('default');
-        $q = "select locale, count(*) from wnk_translation where status = 'NotTranslated' group by locale having count(*) > 0";
+        $q = "select locale, count(*) from " . $table . " where status = 'NotTranslated' group by locale having count(*) > 0";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('lang', $tset);   
         
@@ -204,6 +215,4 @@ class TranslationsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
     }
-
-
 }
