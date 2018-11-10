@@ -6,6 +6,6 @@ use Cake\Routing\Route\DashedRoute;
 Router::plugin('WnkTranslation', 
    ['path' => '/wnk-translation'],
    function (RouteBuilder $routes) {
-     $routes->fallbacks('DashedRoute:class');
+     $routes->fallbacks(DashedRoute::class);
    }
 );
