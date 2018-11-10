@@ -61,7 +61,7 @@ echo '">';
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
-<a href="/wnk-translation/translation/about">About</a>
+<a href="/wnk-translation/translations/about">About</a>
 </div></div>
 
 
