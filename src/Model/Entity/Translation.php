@@ -27,7 +27,11 @@ class Translation extends Entity
      * @var array
      */
     protected $_accessible = [
-        '*' => true,
-        'id' => false,
+        'msgid' => true,
+        'locale' => true,
+        'created' => true,
+        'last_used' => true,
+        'status' => true,
+        'msgstr' => true
     ];
 }
