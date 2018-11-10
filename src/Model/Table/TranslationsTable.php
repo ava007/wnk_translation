@@ -31,8 +31,8 @@ class TranslationsTable extends Table
         else
             $table = 'wnk_translation';
             
-        $this->table($table);
-        $this->displayField('msgid');
+        $this->setTable($table);
+        $this->setDisplayField('msgid');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
     }
