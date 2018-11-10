@@ -11,7 +11,7 @@ use Cake\Utility\Text;
  *
  * @property \WnkTranslation\Model\Table\TranslationsTable $Translations
  */
-class TranslationController extends AppController
+class TranslationsController extends AppController
 {
 
     public function initialize()
