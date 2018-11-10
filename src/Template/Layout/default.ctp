@@ -52,16 +52,16 @@ echo '">';
 
 <footer><div class="container">
 <div class="row"><div class="col-md-12 col-lg-12">
-<p>©Copyright 2018 - wanaka GmbH. All rights reserved.</p>
+<p>©Copyright 2019 - wanaka GmbH. All rights reserved.</p>
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
-<a href="/wnk_translation/translations/index">Translations</a>
+<a href="/wnk-translation/translation/index">Translations</a>
 <small><?= $this->request->env('HTTP_ACCEPT_LANGUAGE') ?></small>
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
-<a href="/wnk_translation/translations/about">About</a>
+<a href="/wnk-translation/translation/about">About</a>
 </div></div>
 
 
