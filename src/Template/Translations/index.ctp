@@ -22,7 +22,8 @@
             echo '<th>' .$this->Form->input('status', ['label' => false,'type' => 'select',
                          'multiple' => false, 
                          'options' => array('Original' => 'Original','NotTranslated' => 'NotTranslated','TranslatedByUser' => 'TranslatedByUser'), 
-                         'empty' => true
+                         'empty' => true,
+                         'value' => $this->request->getQuery('status')
                          ]). '</th>';
             echo'<th>' . $this->Form->button(__('Filter')) . '</th>';
             echo $this->Form->end();
