@@ -72,13 +72,13 @@ class TranslationsController extends AppController
             $table = $wnkConf['tablePrefix'] . $table;
         
         $q = "select locale,status,count(*) as cnt from " . $table;
-        $q.= "where locale in (select distinct locale where status ='Original') ";
+        $q.= " where locale in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('original', $tset);   
         
         $q = "select locale,status,count(*) as cnt from " . $table;
-        $q.= "where locale NOT in (select distinct locale where status ='Original') ";
+        $q.= " where locale NOT in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('tsets', $tset);   
