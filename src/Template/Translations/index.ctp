@@ -13,6 +13,7 @@
                                                        'type' => 'select',
                                                        'multiple' => false,
                                                        'empty' => true,
+                                                       'value' => $this->request->getQuery('locale'),
                                                        'options' => array_merge(
                                                          array($WnkTranslation['default_lang'] => $WnkTranslation['default_lang']),
                                                          array_combine($WnkTranslation['trans_lang'],$WnkTranslation['trans_lang'])
