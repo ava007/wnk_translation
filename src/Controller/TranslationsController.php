@@ -30,23 +30,23 @@ class TranslationsController extends AppController
     {
 
         $where = array();
-        if (!empty($this->request->getQuery['locale']))
-            $where['locale'] = $this->request->getQuery['locale'];
+        if (!empty($this->request->getQuery('locale')))
+            $where['locale'] = $this->request->getQuery('locale');
         if (!empty($this->request->data['locale']))
             $where['locale'] = $this->request->data['locale'];
     
-        if (!empty($this->request->getQuery['msgstr']))
-            $where['msgstr like'] = '%' . $this->request->getQuery['msgstr'] . '%';
+        if (!empty($this->request->getQuery('msgstr')))
+            $where['msgstr like'] = '%' . $this->request->getQuery('msgstr') . '%';
         if (!empty($this->request->data['msgstr']))
             $where['msgstr like'] = '%' . $this->request->data['msgstr'] . '%';
 
-        if (!empty($this->request->getQuery['status']))
-            $where['status'] = $this->request->getQuery['status'];
+        if (!empty($this->request->getQuery('status')))
+            $where['status'] = $this->request->getQuery('status');
         if (!empty($this->request->data['status']))
             $where['status'] = $this->request->data['status'];
         
-        $query = $this->Translations->find()->where($where);
-
+        $query = $this->Translations->find()->where($where);:wq
+           
         $this->set('translations', $this->paginate($query));
         $this->set('_serialize', ['translations']);
         $this->set('WnkTranslation', Configure::read('WnkTranslation'));
