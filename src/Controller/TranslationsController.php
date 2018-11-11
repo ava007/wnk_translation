@@ -45,7 +45,7 @@ class TranslationsController extends AppController
         if (!empty($this->request->data['status']))
             $where['status'] = $this->request->data['status'];
         
-        $query = $this->Translations->find()->where($where);:wq
+        $query = $this->Translations->find()->where($where);
            
         $this->set('translations', $this->paginate($query));
         $this->set('_serialize', ['translations']);
