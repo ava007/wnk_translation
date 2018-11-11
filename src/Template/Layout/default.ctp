@@ -56,12 +56,16 @@ echo '">';
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
-<a href="/wnk-translation/translation/index">Translations</a>
+<a href="/wnk-translation/translations/index">Translations</a>
 <small><?= $this->request->env('HTTP_ACCEPT_LANGUAGE') ?></small>
 </div></div>
 
 <div class="row"><div class="col-md-12 col-lg-12">
 <a href="/wnk-translation/translations/about">About</a>
+</div></div>
+
+<div class="row"><div class="col-md-12 col-lg-12">
+<a href="/wnk-translation/translations/cockpit">Cockpit</a>
 </div></div>
 
 
