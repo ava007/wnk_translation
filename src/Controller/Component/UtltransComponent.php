@@ -134,12 +134,14 @@ class UtltransComponent extends Component
 
         // Step 4: export default.pot file to the relevant directory
 
-        $wnk_translation = Configure::read('WnkTranslation');
+       $msg = 'export: wrote to ' . ROOT. DS. 'src'.DS.'Locale' ;   // for msg to end user
+       
+       $wnk_translation = Configure::read('WnkTranslation');
 
-        $filename= 'f' . gmdate('YmdHis');
+       $filename= 'f' . gmdate('YmdHis');
         
-        // iterate through all configured languages:
-        foreach ($wnk_translation['trans_lang'] as $k):
+       // iterate through all configured languages:
+       foreach ($wnk_translation['trans_lang'] as $k):
             if ($k == $wnk_translation['default_lang']) continue;
 
             $path = ROOT.DS.'src'.DS.'Locale'.DS.$k;
@@ -169,8 +171,9 @@ class UtltransComponent extends Component
             if (file_exists($path.DS.'default.po')) 
                unlink ($path.DS.'default.po');
             rename ($path.DS.$filename,$path.DS.'default.po');
+            $msg .= ' (' . $k . ': ' . $z. ')';
         endforeach;
-        return 'Export successful with ' . $z . ' Records';
+        return 'Export successful ended. ' . $msg;
    }
    
   /*
