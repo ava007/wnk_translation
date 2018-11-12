@@ -1,3 +1,4 @@
+
 <?php
 namespace WnkTranslation\Model\Table;
 
@@ -65,5 +66,10 @@ class TranslationsTable extends Table
             ->allowEmpty('msgstr');
 
         return $validator;
+    }
+    
+    public function deleteunused() {
+       return $this->deleteAll(['last_used >=' => date('Y-m-d', strtotime("-100 days") ]);
+       // new DateTime('-10 days')]
     }
 }
