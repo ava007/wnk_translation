@@ -71,30 +71,28 @@ class TranslationsTable extends Table
     public function deleteunused() {
         $z=0;
         $wnk_translation = Configure::read('WnkTranslation');
-        $this->log(print_r($wnk_translation,true));
+
         if (empty($wnk_translation['default_lang'])) {
            return 'Default Language not defined';
         }   
-        $connection = ConnectionManager::get('default');
-        $translationsTable = TableRegistry::get('WnkTranslation.Translations');
+        
+        $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
         
         // Iterate through all languages defined in config
         foreach ($wnk_translation['trans_lang'] as $k):
             if ($k == $wnk_translation['default_lang']) continue;
-       
-            $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
+                  
             $q = "delete from " . $table . " where locale = '" . $k . "' and msgid not in (";
             $q .= " select msgid from " . $table . " where locale='". $wnk_translation['default_lang'] . "') ";
-            $this->log($q);
-            //$results = $connection->execute($q)->fetchAll('assoc');
-            
+            //$this->query($q);
+            error_log("TranslationsTable::deleteunused: " . $q);
+        
+            $q = "delete from " . $table . " where locale = '" . $k . "'";
+            $q .= " and last_used < current_timestamp - interval '365 days'";
+            //$this->query($q);
+            error_log("TranslationsTable::deleteunused: " . $q);
         endforeach;
         
-        // delete unused strings
-        //delete  from wnk_translation where last_used < current_timestamp - interval '5 days' and locale = 'en';
-        // delete from wnk_translation where locale <> 'en' and msgid not in (select msgid from wnk_translation where locale = 'en');
-        return 'Deleted successfully unused translations.' . $z;
-                              
-                                
+        return 'Delete ended successfully.' . $z;
     }
 }
