@@ -215,4 +215,14 @@ class TranslationsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
     }
+    
+    public function deleteunused()
+    {
+        $this->autoRender = false;
+        $rc = $this->Translations->deleteunused();
+        $this->Flash->success(__('del ended.') . ' ' . $rc);
+        return $this->redirect(['action' => 'cockpit']);
+    }
+
+    
 }
