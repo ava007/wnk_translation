@@ -77,6 +77,9 @@ class TranslationsTable extends Table
         
         $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
         
+        $r = $this->query("select count(*) as ca from " . $table);
+        error_log(print_r($r,true));
+        
         // update last used based on default language
         $q  = " update " . $table . " as t1 set last_used = t2.last_used from lr_wnk_translation t2 ";
         $q .= " where t2.locale = '" . $wnk_translation['default_lang'] . "' and t1.msgid = t2.msgid";
