@@ -77,19 +77,25 @@ class TranslationsTable extends Table
         
         $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
         
+        // update last used based on default language
+        $q  = " update " . $table . " as t1 set last_used = t2.last_used from lr_wnk_translation t2 ";
+        $q .= " where t2.locale = '" . $wnk_translation['default_lang'] . "' and t1.msgid = t2.msgid";
+        error_log("TranslationsTable::deleteunused: " . $q);
+        $this->query($q);
+                
         // Iterate through all languages defined in config
         foreach ($wnk_translation['trans_lang'] as $k):
             if ($k == $wnk_translation['default_lang']) continue;
                   
             $q = "delete from " . $table . " where locale = '" . $k . "' and msgid not in (";
             $q .= " select msgid from " . $table . " where locale='". $wnk_translation['default_lang'] . "') ";
-            //$this->query($q);
             error_log("TranslationsTable::deleteunused: " . $q);
+            $this->query($q);
         
             $q = "delete from " . $table . " where locale = '" . $k . "'";
             $q .= " and last_used < current_timestamp - interval '365 days'";
-            //$this->query($q);
             error_log("TranslationsTable::deleteunused: " . $q);
+            $this->query($q);
         endforeach;
         
         return 'Delete ended successfully.' . $z;
