@@ -7,6 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use WnkTranslation\Model\Entity\Translation;
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Translations Model
@@ -68,6 +69,9 @@ class TranslationsTable extends Table
     }
     
     public function deleteunused() {
+        
+        $conn = ConnectionManager::get('default');
+        
         $z=0;
         $wnk_translation = Configure::read('WnkTranslation');
 
@@ -77,7 +81,7 @@ class TranslationsTable extends Table
         
         $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
         
-        $r = $this->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+        $r = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
         
         // update last used based on default language
         $q  = " update " . $table . " as t1 set last_used = t2.last_used from lr_wnk_translation t2 ";
@@ -100,7 +104,7 @@ class TranslationsTable extends Table
             $this->query($q);
         endforeach;
         
-        $z = $this->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+        $z = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
         error_log(print_r($z,true));
         
         return 'Delete ended successfully.' . $z;
