@@ -28,7 +28,7 @@ Configure::write('WnkTranslation', [
 ]);
 ```
 ### src/Application.php
-
+```
 class Application //extends BaseApplication {
 
   public function bootstrap() {
@@ -36,7 +36,7 @@ class Application //extends BaseApplication {
     $this->addPlugin('WnkTranslation');
   }
 }
-
+```
 ### Database
 
 run the appropriate sql-ddl-script:
