@@ -27,6 +27,7 @@ class ProposedtranslationsController extends AppController
      */
     public function add($id = null)
     {
+        $this->loadModel('Translations');
         $translation = $this->Translations->get($id, [
             'contain' => []
         ]);
