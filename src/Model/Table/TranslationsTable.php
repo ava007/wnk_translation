@@ -81,12 +81,11 @@ class TranslationsTable extends Table
         
         $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
         
-        $r = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+        $startcount = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
         
         // update last used based on default language
         $q  = " update " . $table . " as t1 set last_used = t2.last_used from lr_wnk_translation t2 ";
         $q .= " where t2.locale = '" . $wnk_translation['default_lang'] . "' and t1.msgid = t2.msgid";
-        error_log("TranslationsTable::deleteunused: " . $q);
         $this->query($q);
                 
         // Iterate through all languages defined in config
@@ -104,9 +103,8 @@ class TranslationsTable extends Table
             $this->query($q);
         endforeach;
         
-        $z = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
-        error_log(print_r($z,true));
-        
-        return 'Delete ended successfully.' . $z;
+        $endcount = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+                
+        return 'Delete ended successfully. Number of deleted records: ' . ($startcount[0]['ca'] - $endcount[0]['ca']);
     }
 }
