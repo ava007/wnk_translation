@@ -27,10 +27,8 @@ class TranslationproposedController extends AppController
      */
     public function add($id = null)
     {
-        $this->loadModel('Translations');
-        $translation = $this->Translations->get($id, [
-            'contain' => []
-        ]);
+        $this->loadModel('WnkTranslation.Translations');
+        $translation = $this->Translations->get($id);
         $this->set('translation', $translation);
         $this->set('_serialize', ['translation']);
      
