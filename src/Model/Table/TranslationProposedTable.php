@@ -32,8 +32,15 @@ class TranslationProposedTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
-
-        $this->setTable('wnk_translation_proposed');
+        
+          $wnkConf = Configure::read('WnkTranslation');
+        if (isset($wnkConf['tablePrefix']))
+            $table = $wnkConf['tablePrefix'] . 'wnk_translation_proposed';
+        else
+            $table = 'wnk_translation';
+            
+        $this->setTable($table);
+        
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
