@@ -52,9 +52,9 @@
 
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $translation->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $translation->id], ['target' => '_blank']) ?>
-                    <?= $this->Html->link(__('Propose better translation'), ['controller' => 'ProposedTranslation','action' => 'add', $translation->id], ['target' => '_blank']) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $translation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $translation->id)]) ?>
+                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $translation->id], ['target' => '_blank', 'rel'='nofollow']) ?>
+                    <?= $this->Html->link(__('Propose better translation'), ['controller' => 'ProposedTranslation','action' => 'add', $translation->id], ['target' => '_blank', 'rel'='nofollow']) ?>
+                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $translation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $translation->id), 'rel'='nofollow']) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
