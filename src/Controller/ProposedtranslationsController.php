@@ -1,5 +1,5 @@
 <?php
-namespace WnkProposedtranslation\Controller;
+namespace WnkTranslation\Controller;
 
 use WnkTranslation\Controller\AppController;
 use Cake\Core\Configure;
