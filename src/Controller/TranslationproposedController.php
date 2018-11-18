@@ -37,7 +37,7 @@ class TranslationproposedController extends AppController
         if ($this->request->is('post')) {
             $translation = $this->Translationproposed->newEntity();
             $translation = $this->Translationproposed->patchEntity($translation, $this->request->data);
-            if ($this->TranslationProposed->save($translation)) {
+            if ($this->Translationproposed->save($translation)) {
                 $this->Flash->success(__('The translation has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {
