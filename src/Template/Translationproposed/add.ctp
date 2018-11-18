@@ -1,4 +1,3 @@
-<?php
 <div class="col-md-8 col-xs-12">
 
    <nav class="large-3 medium-4 columns" id="actions-sidebar">
