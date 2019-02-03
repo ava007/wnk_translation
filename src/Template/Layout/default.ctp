@@ -17,7 +17,8 @@ echo '">';
 <meta name="robots" content="noindex, nofollow" />
 
 <title>CakePHP 3 Translation Plugin</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -74,7 +75,6 @@ echo '">';
 <div class="row"><div class="col-md-12 col-lg-12">
 <a href="/wnk-translation/translations/cockpit">Cockpit</a>
 </div></div>
-
 
 </div></footer>
 
