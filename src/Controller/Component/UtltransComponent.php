@@ -70,8 +70,11 @@ class UtltransComponent extends Component
    }
 
    function setLastUsed($id) {
-        $connection = ConnectionManager::get('default');
-        $connection->update('WnkTranslation.Translations', ['last_used = ' => 'now()'], ['id' => $id]);
+       $connection = ConnectionManager::get('default');
+       $translationsTable = TableRegistry::getTableLocator()->get('WnkTranslation.Translations');
+       $tl = $translationsTable->get($id);
+       $tl->last_used= Time::now();
+       $translationsTable->save($tl);
    }
 
    /*
