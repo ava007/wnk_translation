@@ -123,12 +123,18 @@ class UtltransComponent extends Component
                  }
              endforeach;
         endforeach;
-        
-        // delete unused strings
-        //delete  from wnk_translation where last_used < current_timestamp - interval '5 days' and locale = 'en';
-        // delete from wnk_translation where locale <> 'en' and msgid not in (select msgid from wnk_translation where locale = 'en');
 
         return 'Translation preparation successfully ended. Records generated: ' . $z;
+    }
+   
+    function cleanup() {
+        // delete unused strings
+        $q = "delete  from " . $table . " where last_used < current_timestamp - interval '366 days'";
+        $q.= " and locale = '" . $wnk_translation['default_lang'] . "' ";
+        $results = $connection->execute($q)->fetchAll('assoc');
+        $q = "delete from  ". $table . " where locale <> '" . $wnk_translation['default_lang'] . "'";
+        $q.= " and msgid not in (select msgid from " . $table . " where locale = '". $wnk_translation['default_lang'] . "')";
+        $results = $connection->execute($q)->fetchAll('assoc');
     }
 
     function export() {
