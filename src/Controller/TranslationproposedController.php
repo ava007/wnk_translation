@@ -1,5 +1,5 @@
 <?php
-namespace WnkProposedtranslation\Controller;
+namespace WnkTranslation\Controller;
 
 use WnkTranslation\Controller\AppController;
 use Cake\Core\Configure;
@@ -11,7 +11,7 @@ use Cake\Utility\Text;
  *
  * @property \WnkTranslation\Model\Table\TranslationsTable $Translations
  */
-class ProposedtranslationsController extends AppController
+class TranslationproposedController extends AppController
 {
 
     public function initialize()
@@ -27,16 +27,15 @@ class ProposedtranslationsController extends AppController
      */
     public function add($id = null)
     {
-        $translation = $this->Translations->get($id, [
-            'contain' => []
-        ]);
+        $this->loadModel('WnkTranslation.Translations');
+        $translation = $this->Translations->get($id);
         $this->set('translation', $translation);
         $this->set('_serialize', ['translation']);
      
         if ($this->request->is('post')) {
-            $translation = $this->Proposedtranslations->newEntity();
-            $translation = $this->Proposedtranslations->patchEntity($translation, $this->request->data);
-            if ($this->Proposedtranslations->save($translation)) {
+            $translation = $this->Translationproposed->newEntity();
+            $translation = $this->Translationproposed->patchEntity($translation, $this->request->data);
+            if ($this->Translationproposed->save($translation)) {
                 $this->Flash->success(__('The translation has been saved.'));
                 return $this->redirect(['action' => 'index']);
             } else {

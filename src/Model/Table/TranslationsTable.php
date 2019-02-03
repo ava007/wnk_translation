@@ -7,6 +7,7 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 use WnkTranslation\Model\Entity\Translation;
 use Cake\Core\Configure;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Translations Model
@@ -31,8 +32,8 @@ class TranslationsTable extends Table
         else
             $table = 'wnk_translation';
             
-        $this->table($table);
-        $this->displayField('msgid');
+        $this->setTable($table);
+        $this->setDisplayField('msgid');
         $this->primaryKey('id');
         $this->addBehavior('Timestamp');
     }
@@ -65,5 +66,45 @@ class TranslationsTable extends Table
             ->allowEmpty('msgstr');
 
         return $validator;
+    }
+    
+    public function deleteunused() {
+        
+        $conn = ConnectionManager::get('default');
+        
+        $z=0;
+        $wnk_translation = Configure::read('WnkTranslation');
+
+        if (empty($wnk_translation['default_lang'])) {
+           return 'Default Language not defined';
+        }   
+        
+        $table = $wnk_translation['tablePrefix'] . 'wnk_translation';
+        
+        $startcount = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+        
+        // update last used based on default language
+        $q  = " update " . $table . " as t1 set last_used = t2.last_used from lr_wnk_translation t2 ";
+        $q .= " where t2.locale = '" . $wnk_translation['default_lang'] . "' and t1.msgid = t2.msgid";
+        $this->query($q);
+                
+        // Iterate through all languages defined in config
+        foreach ($wnk_translation['trans_lang'] as $k):
+            if ($k == $wnk_translation['default_lang']) continue;
+                  
+            $q = "delete from " . $table . " where locale = '" . $k . "' and msgid not in (";
+            $q .= " select msgid from " . $table . " where locale='". $wnk_translation['default_lang'] . "') ";
+            error_log("TranslationsTable::deleteunused: " . $q);
+            $this->query($q);
+        
+            $q = "delete from " . $table . " where locale = '" . $k . "'";
+            $q .= " and last_used < current_timestamp - interval '365 days'";
+            error_log("TranslationsTable::deleteunused: " . $q);
+            $this->query($q);
+        endforeach;
+        
+        $endcount = $conn->execute("select count(*) as ca from " . $table)->fetchAll('assoc');;
+                
+        return 'Delete ended successfully. Number of deleted records: ' . ($startcount[0]['ca'] - $endcount[0]['ca']);
     }
 }

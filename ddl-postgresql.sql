@@ -19,3 +19,5 @@ CREATE TABLE wnk_translation_proposed (
     msgstr text
     CONSTRAINT status CHECK ( status IN ( 'ProposedByUser', 'AcceptedByAdmin') )   
 ) with (oids = false);
+
+create unique index wnk_translation_unique on wnk_translation (msgid,locale);

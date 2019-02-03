@@ -4,17 +4,17 @@ namespace WnkTranslation\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Translation Entity.
+ * WnkTranslationProposed Entity
  *
  * @property string $id
  * @property string $msgid
  * @property string $locale
- * @property \Cake\I18n\Time $created
- * @property \Cake\I18n\Time $last_used
  * @property string $status
+ * @property \Cake\I18n\Time $created
+ * @property string $createdbyip
  * @property string $msgstr
  */
-class Translation extends Entity
+class TranslationProposed extends Entity
 {
 
     /**
@@ -29,9 +29,9 @@ class Translation extends Entity
     protected $_accessible = [
         'msgid' => true,
         'locale' => true,
-        'created' => true,
-        'last_used' => true,
         'status' => true,
+        'created' => true,
+        'createdbyip' => true,
         'msgstr' => true
     ];
 }

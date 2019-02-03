@@ -1,5 +1,5 @@
  
-# Translation Plugin for CakePHP 3
+# Translation Plugin for CakePHP 3.6
 
 It provides translation services for pot files:
 
@@ -27,6 +27,16 @@ Configure::write('WnkTranslation', [
     'tablePrefix' => '',     // optional prefix for database tables
 ]);
 ```
+### src/Application.php
+```
+class Application //extends BaseApplication {
+
+  public function bootstrap() {
+    parent::bootstrap();
+    $this->addPlugin('WnkTranslation');
+  }
+}
+```
 ### Database
 
 run the appropriate sql-ddl-script:
@@ -36,9 +46,12 @@ run the appropriate sql-ddl-script:
 
 After installation the plugins is called used the following url:
 
-http://....domainname/wnk_translation/translations/index
+http://....domainname/wnk-translation/translations/cockpit
 
 
 ## References
 
+
+
 visit https://www.locavores.co/wnk-translation/translations/index to see this plugin in action
+

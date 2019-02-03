@@ -30,23 +30,25 @@ class TranslationsController extends AppController
     {
 
         $where = array();
-        if (!empty($this->request->getQuery['locale']))
-            $where['locale'] = $this->request->getQuery['locale'];
+
+        if (!empty($this->request->getQuery('locale')))
+            $where['locale'] = $this->request->getQuery('locale');
         if (!empty($this->request->data['locale']))
             $where['locale'] = $this->request->data['locale'];
     
-        if (!empty($this->request->getQuery['msgstr']))
-            $where['msgstr like'] = '%' . $this->request->getQuery['msgstr'] . '%';
+        if (!empty($this->request->getQuery('msgstr')))
+            $where['msgstr like'] = '%' . $this->request->getQuery('msgstr') . '%';
         if (!empty($this->request->data['msgstr']))
             $where['msgstr like'] = '%' . $this->request->data['msgstr'] . '%';
 
-        if (!empty($this->request->getQuery['status']))
-            $where['status'] = $this->request->getQuery['status'];
+        if (!empty($this->request->getQuery('status')))
+            $where['status'] = $this->request->getQuery('status');
+
         if (!empty($this->request->data['status']))
             $where['status'] = $this->request->data['status'];
         
         $query = $this->Translations->find()->where($where);
-
+           
         $this->set('translations', $this->paginate($query));
         $this->set('_serialize', ['translations']);
         $this->set('WnkTranslation', Configure::read('WnkTranslation'));
@@ -72,13 +74,13 @@ class TranslationsController extends AppController
             $table = $wnkConf['tablePrefix'] . $table;
         
         $q = "select locale,status,count(*) as cnt from " . $table;
-        $q.= "where locale in (select distinct locale where status ='Original') ";
+        $q.= " where locale in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('original', $tset);   
         
         $q = "select locale,status,count(*) as cnt from " . $table;
-        $q.= "where locale NOT in (select distinct locale where status ='Original') ";
+        $q.= " where locale NOT in (select distinct locale where status ='Original') ";
         $q.= "group by locale,status order by 1,2 ";
         $tset = $conn->execute($q)->fetchAll('assoc');
         $this->set('tsets', $tset);   
@@ -215,4 +217,14 @@ class TranslationsController extends AppController
             return $this->redirect(['action' => 'index']);
         }
     }
+    
+    public function deleteunused()
+    {
+        $this->autoRender = false;
+        $rc = $this->Translations->deleteunused();
+        $this->Flash->success(__('del ended.') . ' ' . $rc);
+        return $this->redirect(['action' => 'cockpit']);
+    }
+
+    
 }
