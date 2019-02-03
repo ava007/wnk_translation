@@ -51,4 +51,7 @@ http://....domainname/wnk-translation/translations/cockpit
 
 ## References
 
-visit http://www.41share.com/wnk-translation/translations/index to see this plugin in action
+
+
+visit https://www.locavores.co/wnk-translation/translations/index to see this plugin in action
+

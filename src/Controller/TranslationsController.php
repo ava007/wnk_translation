@@ -30,6 +30,7 @@ class TranslationsController extends AppController
     {
 
         $where = array();
+
         if (!empty($this->request->getQuery('locale')))
             $where['locale'] = $this->request->getQuery('locale');
         if (!empty($this->request->data['locale']))
@@ -42,6 +43,7 @@ class TranslationsController extends AppController
 
         if (!empty($this->request->getQuery('status')))
             $where['status'] = $this->request->getQuery('status');
+
         if (!empty($this->request->data['status']))
             $where['status'] = $this->request->data['status'];
         
