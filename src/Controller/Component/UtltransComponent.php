@@ -160,7 +160,15 @@ class UtltransComponent extends Component
                       $rec->status == 'TranslatedByMachine') 
                   {
                         $file->write('msgid "' .$rec->msgid .'"'."\n");
-                        $file->write('msgstr "'.$rec->msgstr.'"'."\n");
+                     
+                        // split multiline messages.
+                        $tok = strtok($rec->msgstr, "\n");
+                        $lineprefix = 'msgstr ';
+                        do {
+                           $file->write($lineprefix . '"'.$tok.'"'."\n");
+                           $lineprefix = '';
+                           $tok = strtok("\n");
+                        } while ($tok !== false);
                         $z++;
                   }
             endforeach;
