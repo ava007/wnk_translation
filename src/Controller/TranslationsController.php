@@ -198,6 +198,14 @@ class TranslationsController extends AppController
     {
     }
     
+    public function cleanup() 
+    {
+        $this->autoRender = false;
+        $rc = $this->Utltrans->cleanup();
+        $this->Flash->success($rc);
+        return $this->redirect(['action' => 'index']);
+    }
+    
     public function googletranslate() {
         $wnkConf = Configure::read('WnkTranslation');
         $this->set('WnkTranslation', $wnkConf);
