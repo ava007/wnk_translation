@@ -41,4 +41,4 @@ http://....domainname/wnk_translation/translations/index
 
 ## References
 
-visit http://www.41share.com/wnk_translation/translations/index to see this plugin in action
+visit https://www.locavores.co/wnk-translation/translations/index to see this plugin in action
