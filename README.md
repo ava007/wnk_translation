@@ -39,8 +39,9 @@ class Application //extends BaseApplication {
 ```
 ### Database
 
-run the appropriate sql-ddl-script:
+run one of the appropriate sql-ddl-script:
 - postgresql:   ddl-postgresql.sql
+- mysql:        ddl-mysql.sql
 
 ### URL
 
