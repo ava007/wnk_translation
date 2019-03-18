@@ -17,7 +17,7 @@ It provides translation services for pot files:
 composer require ava007/wnk_translation
 ```
 
-### Config/bootstrap.ph
+### Config/bootstrap.php
 ```
 Plugin::load('WnkTranslation', ['routes' => true, 'autoload' => true, 'bootstrap' => false]);
 
